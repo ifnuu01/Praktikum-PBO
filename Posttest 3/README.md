@@ -40,4 +40,4 @@ Proyek ini mengikuti prinsip OOP dengan kelas-kelas untuk:
 
 ---
 
-_Dikembangkan dengan 😊 oleh [Ifnu Umar]_
+_Dikembangkan dengan ketenangan oleh Ifnu Umar_
