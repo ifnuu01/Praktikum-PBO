@@ -2,7 +2,7 @@
 
 ## Deskripsi
 
-Selamat datang di Sistem Manajemen Bioskop! Aplikasi berbasis Java ini menyediakan solusi komprehensif untuk mengelola operasi bioskop, termasuk penjadwalan film, penjualan tiket, dan manajemen pelanggan. Dibangun menggunakan prinsip Pemrograman Berorientasi Objek, sistem ini mendemonstrasikan pewarisan, enkapsulasi, polimorfisme, dan konsep OOP penting lainnya.
+Selamat datang di Sistem Manajemen Bioskop! Aplikasi berbasis Java ini menyediakan solusi komprehensif untuk mengelola operasi bioskop, termasuk penjadwalan film, penjualan tiket, dan manajemen pelanggan.
 
 ## ✨ Fitur
 
