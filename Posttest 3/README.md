@@ -1,18 +1,43 @@
-## Getting Started
+# 🎬 Sistem Manajemen Bioskop
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+## Ikhtisar
 
-## Folder Structure
+Selamat datang di Sistem Manajemen Bioskop! Aplikasi berbasis Java ini menyediakan solusi komprehensif untuk mengelola operasi bioskop, termasuk penjadwalan film, penjualan tiket, dan manajemen pelanggan. Dibangun menggunakan prinsip Pemrograman Berorientasi Objek, sistem ini mendemonstrasikan pewarisan, enkapsulasi, polimorfisme, dan konsep OOP penting lainnya.
 
-The workspace contains two folders by default, where:
+## ✨ Fitur
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+- **Autentikasi Pengguna** - Sistem login aman untuk administrator dan staf
+- **Manajemen Film** - Menambah, memperbarui, dan menghapus film dari katalog
+- **Penjadwalan Sesi** - Membuat dan mengelola jadwal pemutaran film
+- **Penjualan Tiket** - Memproses pembelian tiket dan menghasilkan tanda terima
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+## 🔧 Teknologi yang Digunakan
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+- Java
+- Pemrograman Berorientasi Objek
+- File I/O untuk persistensi data
 
-## Dependency Management
+## 👑 Akses Admin
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+Untuk mengakses fitur administratif, gunakan kredensial berikut:
+
+```
+Email: admin@cinema.com
+Password: admin123
+```
+
+## 💻 Struktur Kode
+
+Proyek ini mengikuti prinsip OOP dengan kelas-kelas untuk:
+
+- User (dengan subkelas Admin dan Customer)
+- Film
+- Jadwal
+- Studio
+- Tiket
+
+## 📝 POSTTEST 3
+
+---
+
+_Dikembangkan dengan 😊 oleh [Ifnu Umar]_
