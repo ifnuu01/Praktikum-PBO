@@ -24,6 +24,9 @@ public class CustomerView {
         Customer customer = (Customer) authService.getCurrentUser();
 
         while (true) {
+            System.out.println("\n=== SELAMAT DATANG, " + customer.getNama() + " ===");
+            System.out.println("Email: " + customer.getEmail());
+            System.out.println("Saldo Anda: Rp" + customer.getSaldo());
             System.out.println("\n=== CUSTOMER MENU ===");
             System.out.println("1. Lihat Film");
             System.out.println("2. Pesan Tiket");
@@ -32,25 +35,39 @@ public class CustomerView {
             System.out.println("0. Logout");
 
             int choice = InputUtils.getIntInput("Pilih menu: ");
+            Screen.bersihkanLayar();
 
             switch (choice) {
                 case 1:
                     viewFilms();
+                    Screen.tunggu();
+                    Screen.bersihkanLayar();
                     break;
                 case 2:
                     bookTicket(customer);
+                    Screen.tunggu();
+                    Screen.bersihkanLayar();
                     break;
                 case 3:
                     topUpSaldo(customer);
+                    Screen.tunggu();
+                    Screen.bersihkanLayar();
                     break;
                 case 4:
                     viewMyTickets(customer);
+                    Screen.tunggu();
+                    Screen.bersihkanLayar();
                     break;
                 case 0:
                     authService.logout();
+                    Screen.bersihkanLayar();
+                    System.out.println("Anda telah logout.");
                     return;
                 default:
+                    Screen.bersihkanLayar();
                     System.out.println("Pilihan tidak valid!");
+                    Screen.tunggu();
+                    Screen.bersihkanLayar();
             }
         }
     }
@@ -101,6 +118,7 @@ public class CustomerView {
         }
 
         int filmId = InputUtils.getIntInput("Pilih film (ID): ");
+        Screen.bersihkanLayar();
         Film selectedFilm = filmService.getFilmById(filmId);
         if (selectedFilm == null) {
             System.out.println("Film tidak ditemukan!");
@@ -124,6 +142,7 @@ public class CustomerView {
         }
 
         int jadwalId = InputUtils.getIntInput("Pilih jadwal (ID): ");
+        Screen.bersihkanLayar();
         Jadwal selectedJadwal = studioService.getJadwalById(jadwalId);
         if (selectedJadwal == null) {
             System.out.println("Jadwal tidak ditemukan!");
@@ -135,6 +154,7 @@ public class CustomerView {
         System.out.println();
 
         String kursi = InputUtils.getStringInput("Pilih kursi (contoh: A1): ");
+        Screen.bersihkanLayar();
         if (!kursiTersedia.contains(kursi)) {
             System.out.println("Kursi tidak tersedia!");
             return;
@@ -142,6 +162,8 @@ public class CustomerView {
 
         // Create ticket
         Tiket tiket = bookingService.createTiket(customer, selectedJadwal, kursi);
+        Screen.bersihkanLayar();
+        System.out.println("\n=== RINCIAN TIKET ===");
 
         System.out.println("\nTotal Pembayaran: Rp" + selectedJadwal.getHarga());
         System.out.println("Saldo Anda: Rp" + customer.getSaldo());
@@ -159,6 +181,7 @@ public class CustomerView {
         System.out.println("Saldo saat ini: Rp" + customer.getSaldo());
 
         double amount = InputUtils.getDoubleInput("Masukkan jumlah top up: Rp");
+        Screen.bersihkanLayar();
         customer.topUpSaldo(amount);
 
         System.out.println("Top up berhasil! Saldo baru: Rp" + customer.getSaldo());
@@ -191,7 +214,7 @@ public class CustomerView {
         for (String kursi : kursiTersedia) {
             System.out.print(kursi + " ");
             counter++;
-            if (counter % 10 == 0) { // Print 10 seats per line
+            if (counter % 10 == 0) { // Menambahkan baris baru setiap 10 kursi
                 System.out.println();
             }
         }

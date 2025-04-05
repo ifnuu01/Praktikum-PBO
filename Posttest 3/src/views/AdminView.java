@@ -29,19 +29,29 @@ public class AdminView {
             System.out.println("0. Logout");
 
             int choice = InputUtils.getIntInput("Pilih menu: ");
+            Screen.bersihkanLayar();
 
             switch (choice) {
                 case 1:
                     showFilmManagementMenu();
+                    Screen.tunggu();
+                    Screen.bersihkanLayar();
                     break;
                 case 2:
                     showScheduleManagementMenu();
+                    Screen.tunggu();
+                    Screen.bersihkanLayar();
                     break;
                 case 0:
                     authService.logout();
+                    Screen.bersihkanLayar();
+                    System.out.println("Anda telah logout.");
                     return;
                 default:
+                    Screen.bersihkanLayar();
                     System.out.println("Pilihan tidak valid!");
+                    Screen.tunggu();
+                    Screen.bersihkanLayar();
             }
         }
     }
@@ -56,24 +66,38 @@ public class AdminView {
             System.out.println("0. Kembali");
 
             int choice = InputUtils.getIntInput("Pilih menu: ");
+            Screen.bersihkanLayar();
 
             switch (choice) {
                 case 1:
                     addFilmMenu();
+                    Screen.tunggu();
+                    Screen.bersihkanLayar();
                     break;
                 case 2:
                     viewAllFilms();
+                    Screen.tunggu();
+                    Screen.bersihkanLayar();
                     break;
                 case 3:
                     editFilmMenu();
+                    Screen.tunggu();
+                    Screen.bersihkanLayar();
                     break;
                 case 4:
                     deleteFilmMenu();
+                    System.out.println("Film berhasil dihapus!");
+                    Screen.tunggu();
+                    Screen.bersihkanLayar();
                     break;
                 case 0:
+                    Screen.bersihkanLayar();
+                    System.out.println("Kembali ke menu admin...");
                     return;
                 default:
                     System.out.println("Pilihan tidak valid!");
+                    Screen.tunggu();
+                    Screen.bersihkanLayar();
             }
         }
     }
@@ -88,24 +112,38 @@ public class AdminView {
             System.out.println("0. Kembali");
 
             int choice = InputUtils.getIntInput("Pilih menu: ");
+            Screen.bersihkanLayar();
 
             switch (choice) {
                 case 1:
                     addScheduleMenu();
+                    Screen.tunggu();
+                    Screen.bersihkanLayar();
                     break;
                 case 2:
                     viewAllSchedules();
+                    Screen.tunggu();
+                    Screen.bersihkanLayar();
                     break;
                 case 3:
                     editScheduleMenu();
+                    Screen.tunggu();
+                    Screen.bersihkanLayar();
                     break;
                 case 4:
                     deleteScheduleMenu();
+                    System.out.println("Jadwal berhasil dihapus!");
+                    Screen.tunggu();
+                    Screen.bersihkanLayar();
                     break;
                 case 0:
+                    Screen.bersihkanLayar();
+                    System.out.println("Kembali ke menu admin...");
                     return;
                 default:
                     System.out.println("Pilihan tidak valid!");
+                    Screen.tunggu();
+                    Screen.bersihkanLayar();
             }
         }
     }
@@ -116,6 +154,7 @@ public class AdminView {
             return;
 
         int filmId = InputUtils.getIntInput("Masukkan ID Film yang akan diedit: ");
+        Screen.bersihkanLayar();
         Film film = filmService.getFilmById(filmId);
 
         if (film == null) {
@@ -142,7 +181,7 @@ public class AdminView {
             film.setDurasi(Integer.parseInt(durasiStr));
         if (!sinopsis.isEmpty())
             film.setSinopsis(sinopsis);
-
+        Screen.bersihkanLayar();
         System.out.println("Film berhasil diperbarui!");
     }
 
@@ -152,8 +191,10 @@ public class AdminView {
             return;
 
         int filmId = InputUtils.getIntInput("Masukkan ID Film yang akan dihapus: ");
+        Screen.bersihkanLayar();
 
         if (InputUtils.getYesNoInput("Yakin ingin menghapus film ini?")) {
+            Screen.bersihkanLayar();
             if (filmService.deleteFilm(filmId)) {
                 System.out.println("Film berhasil dihapus!");
             } else {
@@ -189,6 +230,7 @@ public class AdminView {
             return;
 
         int jadwalId = InputUtils.getIntInput("Masukkan ID Jadwal yang akan diedit: ");
+        Screen.bersihkanLayar();
         Jadwal jadwal = studioService.getJadwalById(jadwalId);
 
         if (jadwal == null) {
@@ -230,8 +272,10 @@ public class AdminView {
             return;
 
         int jadwalId = InputUtils.getIntInput("Masukkan ID Jadwal yang akan dihapus: ");
+        Screen.bersihkanLayar();
 
         if (InputUtils.getYesNoInput("Yakin ingin menghapus jadwal ini?")) {
+            Screen.bersihkanLayar();
             if (studioService.deleteJadwal(jadwalId)) {
                 System.out.println("Jadwal berhasil dihapus!");
             } else {
@@ -248,6 +292,7 @@ public class AdminView {
         String sinopsis = InputUtils.getStringInput("Sinopsis: ");
 
         filmService.addFilm(judul, genre, durasi, sinopsis);
+        Screen.bersihkanLayar();
         System.out.println("Film berhasil ditambahkan!");
     }
 
@@ -266,6 +311,7 @@ public class AdminView {
         }
 
         int filmId = InputUtils.getIntInput("Pilih film (ID): ");
+        Screen.bersihkanLayar();
         Film selectedFilm = filmService.getFilmById(filmId);
         if (selectedFilm == null) {
             System.out.println("Film tidak ditemukan!");
@@ -279,6 +325,7 @@ public class AdminView {
         }
 
         int studioNomor = InputUtils.getIntInput("Pilih studio (nomor): ");
+        Screen.bersihkanLayar();
         Studio selectedStudio = studios.stream()
                 .filter(s -> s.getNomor() == studioNomor)
                 .findFirst()
@@ -294,6 +341,7 @@ public class AdminView {
         double harga = InputUtils.getDoubleInput("Harga tiket: ");
 
         studioService.addJadwal(tanggal, waktuMulai, selectedFilm, selectedStudio, harga);
+        Screen.bersihkanLayar();
         System.out.println("Jadwal berhasil ditambahkan!");
     }
 
