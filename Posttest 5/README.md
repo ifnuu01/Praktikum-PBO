@@ -2,8 +2,8 @@
 
 # Ketentuan Posttest
 
-- Terdapat override pada user -> customer dan admin
-- Terdapat overloading pada FilmService fungsi addFilm
+- Terdapat keyword final (1 untuk class, 1 untuk atribut, dan 1 untuk method) = terdapat di class customer dan admin
+- Ada abstract class dan abstract method = terdapat di class user
 
 ## Deskripsi
 
